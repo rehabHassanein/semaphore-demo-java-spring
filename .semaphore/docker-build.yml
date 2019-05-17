@@ -41,7 +41,7 @@ blocks:
           # Use docker layer caching and reuse unchanged layers to build a new
           # container image faster.
           # To do that, we first need to pull a previous version of container:
-          - docker pull semaphoredemos/semaphore-demo-java-spring:latest || true
+          - docker pull $DOCKER_USERNAME/semaphore-demo-java-spring:latest || true
 
 
           # Build a new image based on pulled image, if present.
@@ -49,7 +49,7 @@ blocks:
           # produce a unique image tag.  For a list of available environment
           # variables on Semaphore, see:
           # https://docs.semaphoreci.com/article/12-environment-variables
-          - docker build --cache-from semaphoredemos/semaphore-demo-java-spring:latest --build-arg ENVIRONMENT="${ENVIRONMENT}" -t semaphoredemos/semaphore-demo-java-spring:latest .
+          - docker build --cache-from $DOCKER_USERNAME/semaphore-demo-java-spring:latest --build-arg ENVIRONMENT="${ENVIRONMENT}" -t $DOCKER_USERNAME/semaphore-demo-java-spring:latest .
 
           # Push a new image to container registry:
           - docker push $DOCKER_USERNAME/semaphore-demo-java-spring:latest
