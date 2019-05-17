@@ -52,4 +52,4 @@ blocks:
           - docker build --cache-from semaphoredemos/semaphore-demo-java-spring:latest --build-arg ENVIRONMENT="${ENVIRONMENT}" -t semaphoredemos/semaphore-demo-java-spring:latest .
 
           # Push a new image to container registry:
-          - docker push semaphoredemos/semaphore-demo-java-spring:latest
+          - docker push $DOCKER_USERNAME/semaphore-demo-java-spring:latest
